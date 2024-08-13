@@ -1,0 +1,40 @@
+
+.anchor-pane {
+    -fx-background-color: #f4f4f4;
+}
+
+
+.vbox {
+    -fx-background-color: #1e81b0;
+}
+
+
+.hbox {
+    -fx-background-color: #154c79;
+}
+
+
+.button {
+    -fx-background-color: #1e81b0;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 0;
+    -fx-border-color: transparent;
+    -fx-border-width: 0px 0px 0px 3px;
+    -fx-padding: 0px 0px 0px 30px;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #146599;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #0e5278;
+    -fx-effect: none;
+}
+
+.loadNote {
+    -fx-padding: 0px 0px 0px 0px;
+}

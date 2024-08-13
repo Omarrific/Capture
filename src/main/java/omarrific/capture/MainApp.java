@@ -6,26 +6,25 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
-import java.io.IOException;
-
 public class MainApp extends Application {
+
     @Override
-    public void start(Stage primaryStage) throws IOException {
+    public void start(Stage primaryStage) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/omarrific/capture/MainView.fxml"));
+            BorderPane root = loader.load();
 
 
-        primaryStage.setTitle("Capture");
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MainView.fxml"));
-        BorderPane layout = loader.load();
-
-        Scene scene = new Scene(layout, 800,600);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-
+            Scene scene = new Scene(root, 800, 600);
+            primaryStage.setTitle("Capture");
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

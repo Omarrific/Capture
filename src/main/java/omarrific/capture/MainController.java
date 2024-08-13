@@ -1,120 +1,50 @@
 package omarrific.capture;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-
-import javafx.stage.FileChooser;
-import javafx.stage.Stage;
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-
-import java.io.IOException;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 
 public class MainController {
 
     @FXML
-    private TextArea noteArea;
+    private BorderPane borderPane;
 
     @FXML
-    private Button newNote;
+    private VBox menuPane;
 
     @FXML
-    private Button saveNote;
+    private StackPane contentArea;
 
     @FXML
-    private Button loadNote;
-
+    private Button closeMenuButton;
 
     @FXML
-    private Button deleteNote;
+    private Button reopenMenuButton;
 
-    private static final String NOTES_DIR = "notes";
     @FXML
-    private void initialize()
-    {
-        File notesDir = new File(NOTES_DIR);
-
-        if(!notesDir.exists())
-        {
-            notesDir.mkdir();
-        }
-        newNote.setOnAction(e -> newNoteHandler());
-        saveNote.setOnAction(e -> saveNoteHandler(noteArea.getText()));
-        loadNote.setOnAction(e -> loadNoteHandler());
-        deleteNote.setOnAction(e-> deleteNoteHandler());
-
+    private void initialize() {
+        closeMenuButton.setOnAction(event -> closeMenu());
+        reopenMenuButton.setOnAction(event -> openMenu());
     }
 
-    private void newNoteHandler()
-    {
-        System.out.println("hi");
-        noteArea.clear();
+    private void closeMenu() {
+        menuPane.setVisible(false);
+        reopenMenuButton.setVisible(true);
+
+        // Center content area and make it fullscreen
+        borderPane.setLeft(null); // Hide the menu
+        borderPane.setCenter(contentArea); // Keep the note contents centered
+        contentArea.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
     }
 
-    private void saveNoteHandler(String content)
-    {
-        System.out.println("hi");
-        if(content.isEmpty())
-        {
-            //TBD, show an alert possibly?
-            return;
-        }
+    private void openMenu() {
+        menuPane.setVisible(true);
+        reopenMenuButton.setVisible(false);
 
-        String title = content.split("\n", 2)[0];
-        String fileName = title.replaceAll("\\s+", "_") + ".note"; // Replace spaces in title with underscores
-        Path filePath = Paths.get(NOTES_DIR, fileName);
-
-        Note note = new Note(title, content);
-
-        try{
-            NoteStorage.saveNoteToFile(note,filePath.toString());
-        }
-        catch(IOException e)
-        {
-            e.printStackTrace();
-        }
+        // Restore layout
+        borderPane.setLeft(menuPane);
+        borderPane.setCenter(contentArea); // Keep content visible even when menu is open
     }
-
-    private void deleteNoteHandler()
-    {
-        System.out.println("hi");
-        noteArea.clear();
-    }
-
-    //handling loading notes later
-    private void loadNoteHandler()
-    {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Open Note");
-
-        FileChooser.ExtensionFilter extensionFilter = new FileChooser.ExtensionFilter("Note files (*.note)", "*.note");
-        fileChooser.getExtensionFilters().add(extensionFilter);
-        File notesDirectory = new File("notes");
-        fileChooser.setInitialDirectory(notesDirectory);
-
-        File file = fileChooser.showOpenDialog(new Stage());
-
-
-
-        if(file != null)
-        {
-            try{
-                Note note = NoteStorage.loadNoteFromFile(file.getAbsolutePath());
-                noteArea.setText(note.getContent());
-            }
-            catch(IOException | ClassNotFoundException e){
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Error");
-                alert.setHeaderText("Error Loading Note");
-                alert.setContentText("An error occurred while loading the note: " + e.getMessage());
-                alert.showAndWait();
-            }
-        }
-    }
-
 }

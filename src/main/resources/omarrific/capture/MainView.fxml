@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Pos?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="omarrific.capture.MainController">
-  <top>
-    <HBox>
-      <Button fx:id="newNote" text="New Note" />
-      <Button fx:id="saveNote" text="Save Note" />
-      <Button fx:id="loadNote" text="Load Note" />
-      <Button fx:id="deleteNote" text="Delete Note" />
-    </HBox>
-  </top>
-  <center>
-    <TextArea fx:id="noteArea"/>
-  </center>
+<BorderPane fx:id = "borderPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="omarrific.capture.MainController">
+   <!-- Top Area -->
+   <top>
+      <HBox alignment="CENTER_RIGHT" spacing="10">
+         <Button text="Reopen Menu" fx:id="reopenMenuButton" visible="false"/>
+         <Region HBox.hgrow="ALWAYS"/>
+         <Button text="Login/Profile" fx:id="loginButton"/>
+      </HBox>
+   </top>
+
+   <!-- Left Menu -->
+   <left>
+      <VBox fx:id="menuPane" prefWidth="250" style="-fx-background-color: #f0f0f0;" spacing="10">
+         <HBox alignment="CENTER_LEFT" spacing="10">
+            <Button text="New Note" fx:id="newNoteButton"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="Close Menu" fx:id="closeMenuButton"/>
+         </HBox>
+         <TextField fx:id="searchBar" promptText="Search notes..."/>
+         <VBox fx:id="notesList" spacing="5"/>
+      </VBox>
+   </left>
+
+   <!-- Main Content Area -->
+   <center>
+      <StackPane fx:id="contentArea">
+         <Label text="No note selected" fx:id="noNoteSelectedLabel"/>
+      </StackPane>
+   </center>
 </BorderPane>
