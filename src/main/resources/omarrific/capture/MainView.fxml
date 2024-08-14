@@ -2,9 +2,9 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.geometry.Pos?>
 
-<BorderPane fx:id = "borderPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="omarrific.capture.MainController">
+
+<BorderPane fx:id="borderPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="omarrific.capture.MainController">
    <!-- Top Area -->
    <top>
       <HBox alignment="CENTER_RIGHT" spacing="10">
@@ -23,14 +23,14 @@
             <Button text="Close Menu" fx:id="closeMenuButton"/>
          </HBox>
          <TextField fx:id="searchBar" promptText="Search notes..."/>
-         <VBox fx:id="notesList" spacing="5"/>
+         <ListView fx:id="notesListView" prefHeight="400.0"/>
       </VBox>
    </left>
 
    <!-- Main Content Area -->
    <center>
       <StackPane fx:id="contentArea">
-         <Label text="No note selected" fx:id="noNoteSelectedLabel"/>
+         <Label text="No note selected" fx:id="noNoteSelectedLabel" visible="true" style="-fx-font-size: 16px;"/>
       </StackPane>
    </center>
 </BorderPane>

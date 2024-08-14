@@ -22,6 +22,7 @@ public class Note implements Serializable {
     {
         setContent(content);
         setLastModifiedDate(LocalDateTime.now());
+        setCreationDate(LocalDateTime.now());
     }
 
 
