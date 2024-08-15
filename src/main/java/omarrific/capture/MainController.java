@@ -21,6 +21,8 @@ import java.util.stream.Collectors;
 public class MainController {
 
     @FXML
+    public Button saveButton;
+    @FXML
     private VBox menuPane;
     @FXML
     private Button newNoteButton;
@@ -40,7 +42,6 @@ public class MainController {
     private Button reopenMenuButton;
     @FXML
     private ListView<String> notesListView;
-
     private TextArea noteContentArea;
     private String selectedNoteFileName;
 
@@ -53,7 +54,7 @@ public class MainController {
         noteContentArea = new TextArea();
         noteContentArea.setWrapText(true);
         noteContentArea.setEditable(false);
-        noteContentArea.setOnKeyReleased(event -> handleNoteEditing());
+        noteContentArea.setText("No note selected");
         contentArea.getChildren().add(noteContentArea);
 
         updateNotesList();
@@ -63,17 +64,28 @@ public class MainController {
                 selectedNoteFileName = newValue + ".note";
                 if (noteExists(selectedNoteFileName)) {
                     loadNoteContent(selectedNoteFileName);
-                    noNoteSelectedLabel.setVisible(false);
                 } else {
                     clearNoteContent();
-                    noNoteSelectedLabel.setVisible(true);
                 }
             } else {
                 clearNoteContent();
-                noNoteSelectedLabel.setVisible(true);
             }
         });
+
+        notesListView.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                String selectedNote = notesListView.getSelectionModel().getSelectedItem();
+                if (selectedNote != null) {
+                    renameNote(selectedNote);
+                }
+            }
+        });
+
+        //toolbar stuff
+
+
     }
+
 
     private void createNote() {
         String noteName;
@@ -204,7 +216,7 @@ public class MainController {
     }
 
     private void clearNoteContent() {
-        noteContentArea.clear();
+        noteContentArea.setText("No note selected");
         noteContentArea.setEditable(false);
     }
 
@@ -299,4 +311,6 @@ public class MainController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+
 }

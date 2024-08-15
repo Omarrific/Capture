@@ -3,7 +3,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <BorderPane fx:id="borderPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="omarrific.capture.MainController">
    <!-- Top Area -->
    <top>
@@ -30,7 +29,11 @@
    <!-- Main Content Area -->
    <center>
       <StackPane fx:id="contentArea">
+         <ToolBar >
+            <Button text = "Save" fx:id = "saveButton"/>
+         </ToolBar>
          <Label text="No note selected" fx:id="noNoteSelectedLabel"/>
       </StackPane>
    </center>
 </BorderPane>
+
