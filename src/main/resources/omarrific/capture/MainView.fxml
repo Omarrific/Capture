@@ -30,7 +30,7 @@
    <!-- Main Content Area -->
    <center>
       <StackPane fx:id="contentArea">
-         <Label text="No note selected" fx:id="noNoteSelectedLabel" visible="true" style="-fx-font-size: 16px;"/>
+         <Label text="No note selected" fx:id="noNoteSelectedLabel"/>
       </StackPane>
    </center>
 </BorderPane>
