@@ -1,0 +1,18 @@
+.root {
+    -fx-background-color: #2e2e2e;
+    -fx-text-fill: #ffffff;
+}
+
+.top-bar, .menu-pane, .content-area, .toolbar-button, .menu-button, .notes-list-view, .search-bar {
+    -fx-background-color: #3e3e3e;
+    -fx-text-fill: #ffffff;
+}
+
+.top-bar-button {
+    -fx-background-color: #555555;
+    -fx-text-fill: #ffffff;
+}
+
+.no-note-label {
+    -fx-text-fill: #ffffff;
+}

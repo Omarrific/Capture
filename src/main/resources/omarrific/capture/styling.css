@@ -1,40 +1,80 @@
-
-.anchor-pane {
+.root {
     -fx-background-color: #f4f4f4;
+    -fx-font-family: 'Segoe UI', sans-serif;
+    -fx-font-size: 14px;
 }
 
-
-.vbox {
+.top-bar {
     -fx-background-color: #1e81b0;
+    -fx-padding: 10px;
 }
 
-
-.hbox {
-    -fx-background-color: #154c79;
-}
-
-
-.button {
-    -fx-background-color: #1e81b0;
+.top-bar-button {
+    -fx-background-color: transparent;
     -fx-text-fill: white;
     -fx-font-size: 14px;
-    -fx-padding: 10px 0;
+    -fx-padding: 5px 10px;
     -fx-border-color: transparent;
-    -fx-border-width: 0px 0px 0px 3px;
-    -fx-padding: 0px 0px 0px 30px;
+}
+
+.top-bar-button:hover {
+    -fx-background-color: #146599;
+}
+
+.menu-pane {
+    -fx-background-color: #154c79;
+    -fx-padding: 15px;
+}
+
+.menu-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10px 20px;
     -fx-cursor: hand;
 }
 
-.button:hover {
+.menu-button:hover {
+    -fx-background-color: #1e81b0;
+}
+
+.search-bar {
+    -fx-background-color: #f4f4f4;
+    -fx-text-fill: #1e81b0;
+    -fx-prompt-text-fill: #1e81b0;
+    -fx-border-color: #1e81b0;
+    -fx-padding: 5px;
+}
+
+.notes-list-view {
+    -fx-background-color: #f4f4f4;
+    -fx-text-fill: #1e81b0;
+    -fx-border-color: #1e81b0;
+}
+
+.content-area {
+    -fx-background-color: #f4f4f4;
+    -fx-padding: 15px;
+}
+
+.minimal-toolbar {
+    -fx-background-color: #1e81b0;
+    -fx-padding: 5px;
+}
+
+.toolbar-button {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 5px 10px;
+    -fx-cursor: hand;
+}
+
+.toolbar-button:hover {
     -fx-background-color: #146599;
-    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.2), 5, 0, 0, 2);
 }
 
-.button:pressed {
-    -fx-background-color: #0e5278;
-    -fx-effect: none;
-}
-
-.loadNote {
-    -fx-padding: 0px 0px 0px 0px;
+.no-note-label {
+    -fx-text-fill: #154c79;
+    -fx-font-size: 16px;
 }

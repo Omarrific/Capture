@@ -21,10 +21,16 @@ public class MainApp extends Application {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/omarrific/capture/MainView.fxml"));
             BorderPane root = loader.load();
 
+            MainController controller = loader.getController();
+
+
+
             Scene scene = new Scene(root, 800, 600);
+            scene.getStylesheets().add(getClass().getResource("/omarrific/capture/styling.css").toExternalForm());
             primaryStage.setTitle("Capture");
             primaryStage.setScene(scene);
             primaryStage.show();
+            controller.setScene(scene);
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -1,6 +1,7 @@
 package omarrific.capture;
 
 import javafx.fxml.FXML;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -44,6 +45,9 @@ public class MainController {
     private ListView<String> notesListView;
     private TextArea noteContentArea;
     private String selectedNoteFileName;
+    @FXML
+    private ToggleButton modeToggleButton;
+    private Scene scene;
 
     @FXML
     private void initialize() {
@@ -51,11 +55,13 @@ public class MainController {
         reopenMenuButton.setOnAction(event -> openMenu());
         newNoteButton.setOnMousePressed(event -> createNote());
 
+
         noteContentArea = new TextArea();
         noteContentArea.setWrapText(true);
         noteContentArea.setEditable(false);
         noteContentArea.setText("No note selected");
         contentArea.getChildren().add(noteContentArea);
+        contentArea.setStyle("-fx-background:blue");
 
         updateNotesList();
 
@@ -80,6 +86,11 @@ public class MainController {
                 }
             }
         });
+
+
+        //dark theme light theme
+        modeToggleButton.setOnAction(event -> toggleMode());
+
 
         //toolbar stuff
 
@@ -311,6 +322,23 @@ public class MainController {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
+    public void setScene(Scene scene){
+        this.scene = scene;
+    }
+
+    private void toggleMode() {
+        if (modeToggleButton.isSelected()) {
+            scene.getStylesheets().remove(getClass().getResource("/omarrific/capture/styling.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/omarrific/capture/darkTheme.css").toExternalForm());
+            modeToggleButton.setText("Light Mode");
+        } else {
+            scene.getStylesheets().add(getClass().getResource("/omarrific/capture/styling.css").toExternalForm());
+            scene.getStylesheets().remove(getClass().getResource("/omarrific/capture/darkTheme.css").toExternalForm());
+            modeToggleButton.setText("Dark Mode");
+        }
+    }
+
 
 
 }

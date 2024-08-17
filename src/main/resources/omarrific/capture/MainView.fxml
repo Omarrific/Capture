@@ -6,34 +6,34 @@
 <BorderPane fx:id="borderPane" xmlns:fx="http://javafx.com/fxml/1" fx:controller="omarrific.capture.MainController">
    <!-- Top Area -->
    <top>
-      <HBox alignment="CENTER_RIGHT" spacing="10">
-         <Button text="Reopen Menu" fx:id="reopenMenuButton" visible="false"/>
+      <HBox alignment="CENTER_RIGHT" spacing="10" styleClass="top-bar">
+         <Button text="Reopen Menu" fx:id="reopenMenuButton" visible="false" styleClass="top-bar-button"/>
          <Region HBox.hgrow="ALWAYS"/>
-         <Button text="Login/Profile" fx:id="loginButton"/>
+         <ToggleButton text="Dark Mode" fx:id="modeToggleButton" styleClass="top-bar-button"/>
+         <Button text="Login/Profile" fx:id="loginButton" styleClass="top-bar-button"/>
       </HBox>
    </top>
 
    <!-- Left Menu -->
    <left>
-      <VBox fx:id="menuPane" prefWidth="250" style="-fx-background-color: #f0f0f0;" spacing="10">
+      <VBox fx:id="menuPane" prefWidth="250" styleClass="menu-pane" spacing="10">
          <HBox alignment="CENTER_LEFT" spacing="10">
-            <Button text="New Note" fx:id="newNoteButton"/>
+            <Button text="New Note" fx:id="newNoteButton" styleClass="menu-button"/>
             <Region HBox.hgrow="ALWAYS"/>
-            <Button text="Close Menu" fx:id="closeMenuButton"/>
+            <Button text="Close Menu" fx:id="closeMenuButton" styleClass="menu-button"/>
          </HBox>
-         <TextField fx:id="searchBar" promptText="Search notes..."/>
-         <ListView fx:id="notesListView" prefHeight="400.0"/>
+         <TextField fx:id="searchBar" promptText="Search notes..." styleClass="search-bar"/>
+         <ListView fx:id="notesListView" prefHeight="400.0" styleClass="notes-list-view"/>
       </VBox>
    </left>
 
    <!-- Main Content Area -->
    <center>
-      <StackPane fx:id="contentArea">
-         <ToolBar >
-            <Button text = "Save" fx:id = "saveButton"/>
+      <StackPane fx:id="contentArea" styleClass="content-area">
+         <ToolBar styleClass="minimal-toolbar">
+            <Button text="Save" fx:id="saveButton" styleClass="toolbar-button"/>
          </ToolBar>
-         <Label text="No note selected" fx:id="noNoteSelectedLabel"/>
+         <Label text="No note selected" fx:id="noNoteSelectedLabel" styleClass="no-note-label"/>
       </StackPane>
    </center>
 </BorderPane>
-
