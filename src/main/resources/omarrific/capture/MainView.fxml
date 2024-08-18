@@ -14,7 +14,7 @@
       </HBox>
    </top>
 
-   <!-- Left Menu -->
+   <!-- Left Menu (Notes Pane) -->
    <left>
       <VBox fx:id="menuPane" prefWidth="250" styleClass="menu-pane" spacing="10">
          <HBox alignment="CENTER_LEFT" spacing="10">
@@ -26,6 +26,17 @@
          <ListView fx:id="notesListView" prefHeight="400.0" styleClass="notes-list-view"/>
       </VBox>
    </left>
+
+   <!-- Login Pane (Right) -->
+   <right>
+      <VBox fx:id="loginPane" prefWidth="250" styleClass="login-pane" spacing="10" visible="false">
+         <Label text="Login" styleClass="login-label"/>
+         <TextField fx:id="usernameField" promptText="Username" styleClass="login-field"/>
+         <PasswordField fx:id="passwordField" promptText="Password" styleClass="login-field"/>
+         <Button text="Login" fx:id="performLoginButton" styleClass="login-button"/>
+         <Button text="Close" fx:id="closeLoginPaneButton" styleClass="login-button"/>
+      </VBox>
+   </right>
 
    <!-- Main Content Area -->
    <center>

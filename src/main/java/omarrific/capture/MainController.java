@@ -32,8 +32,6 @@ public class MainController {
     @FXML
     private TextField searchBar;
     @FXML
-    private Button loginButton;
-    @FXML
     private BorderPane borderPane;
     @FXML
     private StackPane contentArea;
@@ -47,21 +45,37 @@ public class MainController {
     private String selectedNoteFileName;
     @FXML
     private ToggleButton modeToggleButton;
+    @FXML
+    private TextField usernameField;
+    @FXML
+    private PasswordField passwordField;
+    @FXML
+    private Button loginButton;
+    @FXML
+    private Button performLoginButton;
+    @FXML
+    private Button closeLoginPaneButton;
+    @FXML
+    private VBox loginPane;
     private Scene scene;
 
     @FXML
     private void initialize() {
+        // Menu Pane Handlers
         closeMenuButton.setOnAction(event -> closeMenu());
         reopenMenuButton.setOnAction(event -> openMenu());
         newNoteButton.setOnMousePressed(event -> createNote());
 
+        // Login Pane Handlers
+        loginButton.setOnAction(event -> openLoginPane());
+        closeLoginPaneButton.setOnAction(event -> closeLoginPane());
+        performLoginButton.setOnAction(event -> performLogin());
 
         noteContentArea = new TextArea();
         noteContentArea.setWrapText(true);
         noteContentArea.setEditable(false);
         noteContentArea.setText("No note selected");
         contentArea.getChildren().add(noteContentArea);
-        contentArea.setStyle("-fx-background:blue");
 
         updateNotesList();
 
@@ -78,23 +92,8 @@ public class MainController {
             }
         });
 
-        notesListView.setOnMouseClicked(event -> {
-            if (event.getClickCount() == 2) {
-                String selectedNote = notesListView.getSelectionModel().getSelectedItem();
-                if (selectedNote != null) {
-                    renameNote(selectedNote);
-                }
-            }
-        });
-
-
-        //dark theme light theme
+        // Dark Mode Toggle
         modeToggleButton.setOnAction(event -> toggleMode());
-
-
-        //toolbar stuff
-
-
     }
 
 
@@ -338,6 +337,25 @@ public class MainController {
             modeToggleButton.setText("Dark Mode");
         }
     }
+
+    private void openLoginPane() {
+        loginPane.setVisible(true);
+        borderPane.setRight(loginPane);
+    }
+
+    private void closeLoginPane() {
+        loginPane.setVisible(false);
+        borderPane.setRight(null);
+    }
+
+    private void performLogin() {
+        String username = usernameField.getText();
+        String password = passwordField.getText();
+
+        //login stuff
+    }
+
+
 
 
 
